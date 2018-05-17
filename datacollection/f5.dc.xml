@@ -1,5 +1,4 @@
-<?xml version="1.0"?>
-<datacollection-group name="F5-BigIP-LTM-Load-Balancers">
+<datacollection-group xmlns="https://xmlns.opennms.org/xsd/config/datacollection" name="F5-BigIP-LTM-Load-Balancers">
 
     <resourceType name="ltmPoolStatName" label="F5 LTM Pool Stats (F5 BigIP MIB)"
                   resourceLabel="${ltmPoolStatName}">
