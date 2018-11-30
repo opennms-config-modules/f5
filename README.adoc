@@ -38,6 +38,7 @@ cp ${HOME}/opennms-config-workspace/f5/datacollection/*.xml ${OPENNMS_HOME}/etc/
 [source, xml]
 ----
 <include-collection dataCollectionGroup="F5-BigIP-LTM-Load-Balancers"/>
+<include-collection dataCollectionGroup="F5-BigIP-Systems"/>
 ----
 
 === Graph Report Definitions

@@ -1,0 +1,113 @@
+<datacollection-group xmlns="http://xmlns.opennms.org/xsd/config/datacollection" name="F5-BigIP-Systems">
+  <resourceType name="sysSubMemoryEntry" label="sysSubMemoryEntry" resourceLabel="${index}">
+    <persistenceSelectorStrategy class="org.opennms.netmgt.collection.support.PersistAllSelectorStrategy"/>
+    <storageStrategy class="org.opennms.netmgt.collection.support.IndexStorageStrategy"/>
+  </resourceType>
+  <resourceType name="sysCpuEntry" label="sysCpuEntry" resourceLabel="${index}">
+    <persistenceSelectorStrategy class="org.opennms.netmgt.collection.support.PersistAllSelectorStrategy"/>
+    <storageStrategy class="org.opennms.netmgt.collection.support.IndexStorageStrategy"/>
+  </resourceType>
+  <resourceType name="sysChassisFanEntry" label="sysChassisFanEntry" resourceLabel="${sysChassisFanStatus} (${index})">
+    <persistenceSelectorStrategy class="org.opennms.netmgt.collection.support.PersistAllSelectorStrategy"/>
+    <storageStrategy class="org.opennms.netmgt.collection.support.IndexStorageStrategy"/>
+  </resourceType>
+  <resourceType name="sysChassisPowerSupplyEntry" label="sysChassisPowerSupplyEntry"
+                resourceLabel="${sysChasPoweSuppStat} (${index})">
+    <persistenceSelectorStrategy class="org.opennms.netmgt.collection.support.PersistAllSelectorStrategy"/>
+    <storageStrategy class="org.opennms.netmgt.collection.support.IndexStorageStrategy"/>
+  </resourceType>
+  <resourceType name="sysChassisTempEntry" label="sysChassisTempEntry" resourceLabel="${index}">
+    <persistenceSelectorStrategy class="org.opennms.netmgt.collection.support.PersistAllSelectorStrategy"/>
+    <storageStrategy class="org.opennms.netmgt.collection.support.IndexStorageStrategy"/>
+  </resourceType>
+  <resourceType name="sysHostDiskEntry" label="sysHostDiskEntry" resourceLabel="${sysHostDiskPartitio}">
+    <persistenceSelectorStrategy class="org.opennms.netmgt.collection.support.PersistAllSelectorStrategy"/>
+    <storageStrategy class="org.opennms.netmgt.collection.support.IndexStorageStrategy"/>
+  </resourceType>
+
+  <group name="sysSubMemory" ifType="ignore">
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.5.1" instance="0" alias="sysSubMemoReseStats" type="integer"/>
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.5.2" instance="0" alias="sysSubMemoryNumber" type="integer"/>
+  </group>
+  <group name="sysSubMemoryTable" ifType="all">
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.5.3.1.1" instance="sysSubMemoryEntry" alias="sysSubMemoryName"
+            type="octetstring"/>
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.5.3.1.2" instance="sysSubMemoryEntry" alias="sysSubMemoryAllocat"
+            type="counter64"/>
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.5.3.1.3" instance="sysSubMemoryEntry" alias="sysSubMemorMaxAlloc"
+            type="counter64"/>
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.5.3.1.4" instance="sysSubMemoryEntry" alias="sysSubMemorySize" type="counter64"/>
+  </group>
+  <group name="sysCpu" ifType="ignore">
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.3.1.1" instance="0" alias="sysCpuNumber" type="integer"/>
+  </group>
+  <group name="sysCpuTable" ifType="all">
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.3.1.2.1.1" instance="sysCpuEntry" alias="sysCpuIndex" type="integer"/>
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.3.1.2.1.2" instance="sysCpuEntry" alias="sysCpuTemperature" type="integer"/>
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.3.1.2.1.3" instance="sysCpuEntry" alias="sysCpuFanSpeed" type="gauge32"/>
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.3.1.2.1.4" instance="sysCpuEntry" alias="sysCpuName" type="octetstring"/>
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.3.1.2.1.5" instance="sysCpuEntry" alias="sysCpuSlot" type="integer"/>
+  </group>
+  <group name="sysChassisFan" ifType="ignore">
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.3.2.1.1" instance="0" alias="sysChassisFanNumber" type="integer"/>
+  </group>
+  <group name="sysChassisFanTable" ifType="all">
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.3.2.1.2.1.1" instance="sysChassisFanEntry" alias="sysChassisFanIndex"
+            type="integer"/>
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.3.2.1.2.1.2" instance="sysChassisFanEntry" alias="sysChassisFanStatus"
+            type="string"/>
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.3.2.1.2.1.3" instance="sysChassisFanEntry" alias="sysChassisFanSpeed"
+            type="gauge32"/>
+  </group>
+  <group name="sysChassisPowerSupply" ifType="ignore">
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.3.2.2.1" instance="0" alias="sysChasPoweSuppNumb" type="integer"/>
+  </group>
+  <group name="sysChassisPowerSupplyTable" ifType="all">
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.3.2.2.2.1.1" instance="sysChassisPowerSupplyEntry" alias="sysChasPoweSuppInde"
+            type="integer"/>
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.3.2.2.2.1.2" instance="sysChassisPowerSupplyEntry" alias="sysChasPoweSuppStat"
+            type="string"/>
+  </group>
+  <group name="sysChassisTemp" ifType="ignore">
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.3.2.3.1" instance="0" alias="sysChassiTempNumber" type="integer"/>
+  </group>
+  <group name="sysChassisTempTable" ifType="all">
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.3.2.3.2.1.1" instance="sysChassisTempEntry" alias="sysChassisTempIndex"
+            type="integer"/>
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.3.2.3.2.1.2" instance="sysChassisTempEntry" alias="sysChassiTempTemper"
+            type="gauge32"/>
+  </group>
+  <group name="sysHostDisk" ifType="all">
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.7.3.1" instance="0" alias="sysHostDiskNumber" type="integer"/>
+  </group>
+  <group name="sysHostDiskTable" ifType="all">
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.7.3.2.1.1" instance="sysHostDiskEntry" alias="sysHostDiskPartitio"
+            type="string"/>
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.7.3.2.1.2" instance="sysHostDiskEntry" alias="sysHostDiskBlocSize"
+            type="gauge32"/>
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.7.3.2.1.3" instance="sysHostDiskEntry" alias="sysHostDiskTotaBloc"
+            type="gauge32"/>
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.7.3.2.1.4" instance="sysHostDiskEntry" alias="sysHostDiskFreeBloc"
+            type="gauge32"/>
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.7.3.2.1.5" instance="sysHostDiskEntry" alias="sysHostDiskTotaNode"
+            type="gauge32"/>
+    <mibObj oid=".1.3.6.1.4.1.3375.2.1.7.3.2.1.6" instance="sysHostDiskEntry" alias="sysHostDiskFreeNode"
+            type="gauge32"/>
+  </group>
+  <systemDef name="F5 BigIP System Stats">
+    <sysoidMask>.1.3.6.1.4.1.3375.2.</sysoidMask>
+    <collect>
+      <includeGroup>sysSubMemory</includeGroup>
+      <includeGroup>sysSubMemoryTable</includeGroup>
+      <includeGroup>sysCpu</includeGroup>
+      <includeGroup>sysCpuTable</includeGroup>
+      <includeGroup>sysChassisFan</includeGroup>
+      <includeGroup>sysChassisFanTable</includeGroup>
+      <includeGroup>sysChassisPowerSupply</includeGroup>
+      <includeGroup>sysChassisTemp</includeGroup>
+      <includeGroup>sysChassisTempTable</includeGroup>
+      <includeGroup>sysHostDisk</includeGroup>
+      <includeGroup>sysHostDiskTable</includeGroup>
+    </collect>
+  </systemDef>
+</datacollection-group>
